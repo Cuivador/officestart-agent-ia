@@ -20,13 +20,31 @@ def main():
     
     #Leer el contenido del Manual del Estudiante
     document_text = load_pdf(PDF_PATH)
-    
-    # Pregunta de prueba para verificar la comunicación con Gemini.
-    question = get_user_question()
-    # Generar la respuesta utilizando el contenido del manual.
-    response = generate_response(document_text, question)
-    # Mostrar la respuesta obtenida.
-    print(response)
+    #Mensaje de Bienvenida
+    print("=" * 50)
+    print("     Asistente Virtual de OfficeStart")
+    print("=" * 50)
+    print("Escribe tu pregunta sobre el Manual del Estudiante.")
+    print("Para finalizar la conversacion escribe: salir\n")
 
+    """
+    Mantiene activa la conversacion con el usuario hasta que este decida finalizarla
+    escribiendo la palabra clave "salir".
+    """
+    while True:
+        # Optiene la pregunta del usuario
+        question = get_user_question()
+        # Verifica si la entrada es salir
+        if question.strip().lower() == "salir":
+            print("\nGracias por utilizar el Asistente Virtual de OfficeStart.")
+            print("¡Hasta Pronto!")
+            break
+        
+        # Generar la respuesta utilizando el contenido del manual.
+        response = generate_response(document_text, question)
+        # Mostrar la respuesta obtenida.
+        print(response)
+        print()
+  
 if __name__ == "__main__":
     main()

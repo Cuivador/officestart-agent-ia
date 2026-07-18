@@ -18,9 +18,17 @@ def get_user_question():
     Returns:
         str: Pregunta ingresada por el usuario
     """
+    
+    # Verifica que la pregunta ingresada sea valida antes de enviarla al modelo.
+    while True:
+        #solicitar al usuario una pregunta.
+        question = input("Escribe tu pregunta: ")
 
-    #solicitar al usuario una pregunta.
-    question = input("Escribe tu pregunta: ")
+        # Valida si la pregunta es una cadena vacia o contiene unicamente espacios
+        if question.strip() == "":
+            print("Lo siento, no has escrito ninguna pregunta.\n")
+            #print()
+            continue
 
-    #Devolver la pregunta capturada.
-    return question
+        #Devolver la pregunta capturada.
+        return question
