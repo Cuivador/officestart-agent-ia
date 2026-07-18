@@ -10,6 +10,7 @@ Responsabilidad:
 
 from src.config import PDF_PATH
 from src.pdf_loader import load_pdf
+from src.llm import generate_response
 
 def main():
     """
@@ -18,9 +19,13 @@ def main():
     
     #Leer el contenido del Manual del Estudiante
     document_text = load_pdf(PDF_PATH)
-
-    #Mostrar una vista previa del contenido (slicing de 0 hasta 1000).
-    print(document_text[:1000])
+    
+    # Pregunta de prueba para verificar la comunicación con Gemini.
+    question = "¿Que cursos?"
+    # Generar la respuesta utilizando el contenido del manual.
+    response = generate_response(document_text, question)
+    # Mostrar la respuesta obtenida.
+    print(response)
 
 if __name__ == "__main__":
     main()
