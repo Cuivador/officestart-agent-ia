@@ -139,6 +139,9 @@ def generate_response(context, question):
         #Devolver unicamente el texto de la respuesta.
         return response.text
     
-    except Exception as error:
-        #Informar que ocurrio un problema durante la comunicacion con Gemini
-        raise Exception(f"Error al generar la respuesta: {error}")
+    except Exception:
+        # Informar al usuario que ocurrio un error durante el procesamiento
+        return (
+            "Lo siento, ha ocurrido un error al procesar su solicitud.\n\n"
+            "Por favor, inténtelo nuevamente en unos momentos."
+        )
