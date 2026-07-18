@@ -52,8 +52,8 @@ def load_pdf(pdf_path: Path) ->str:
         for page in reader.pages:
             #Extraer el texto de la pagina actual y añadirlo al texto completo si no hay texto utiliza cadena vacia.
             text += page.extract_text() or ""
-            #Devolver el texto completo del documento.
-            return clean_text(text)
+        #Devolver el texto completo del documento.
+        return clean_text(text)
 
     #Informar cuando el archivo PDF no existe en la ruta indicada.
     except FileNotFoundError:

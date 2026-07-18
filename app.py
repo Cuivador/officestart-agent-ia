@@ -11,6 +11,7 @@ Responsabilidad:
 from src.config import PDF_PATH
 from src.pdf_loader import load_pdf
 from src.llm import generate_response
+from src.user_input import get_user_question
 
 def main():
     """
@@ -21,7 +22,7 @@ def main():
     document_text = load_pdf(PDF_PATH)
     
     # Pregunta de prueba para verificar la comunicación con Gemini.
-    question = "¿Que cursos?"
+    question = get_user_question()
     # Generar la respuesta utilizando el contenido del manual.
     response = generate_response(document_text, question)
     # Mostrar la respuesta obtenida.
