@@ -139,8 +139,9 @@ def generate_response(context, question):
         #Devolver unicamente el texto de la respuesta.
         return response.text
     
-    except Exception:
+    except Exception as error:
         # Informar al usuario que ocurrio un error durante el procesamiento
+        print(error)
         return (
             "Lo siento, ha ocurrido un error al procesar su solicitud.\n\n"
             "Por favor, inténtelo nuevamente en unos momentos."
