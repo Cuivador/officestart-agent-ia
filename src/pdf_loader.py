@@ -9,7 +9,7 @@ Responsabilidad:
 
 Este módulo NO contiene lógica de inteligencia artificial.
 Su única responsabilidad es obtener y preparar el contenido del
-documento para que otros modulos puedan utilizarlo.
+documento para que otros módulos puedan utilizarlo.
 ===============================================================
 """
 
@@ -18,13 +18,13 @@ from pypdf import PdfReader
 
 def clean_text(text: str) -> str:
     """
-    Limpia el texto extraido del PDF para facilitar su procesamiento.
+    Limpia el texto extraído del PDF para facilitar su procesamiento.
     """
 
-    #Reemplazar saltos de linea por espacios.
+    # Reemplazar saltos de linea por espacios.
     text = text.replace("\n", " ")
 
-    #Normalizar espacios en blanco consecutivos.
+    # Normalizar espacios en blanco consecutivos.
     text = " ".join(text.split())
     return text
 
@@ -42,26 +42,26 @@ def load_pdf(pdf_path: Path) ->str:
         str: Texto extraído del documento.
     """
     try:
-        #Crear un lector para acceder al contenido del PDF - guarda un objeto
+        # Crear un lector para acceder al contenido del PDF - guarda un objeto
         reader = PdfReader(pdf_path)
 
-        #Almacenará el texto completo del documento.
+        # Almacenará el texto completo del documento.
         text = ""
 
-        #Recorrer cada una de las paginas del documento.
+        # Recorrer cada una de las paginas del documento.
         for page in reader.pages:
             #Extraer el texto de la pagina actual y añadirlo al texto completo si no hay texto utiliza cadena vacia.
             text += page.extract_text() or ""
-        #Devolver el texto completo del documento.
+        # Devolver el texto completo del documento.
         return clean_text(text)
 
-    #Informar cuando el archivo PDF no existe en la ruta indicada.
+    # Informar cuando el archivo PDF no existe en la ruta indicada.
     except FileNotFoundError:
         raise FileNotFoundError(
             f"No se encontro el archivo PDF: {pdf_path}"
         ) from None
     
-    #Capturar cualquier otro error inesperado durante la lectura del documento.
+    # Capturar cualquier otro error inesperado durante la lectura del documento.
     except Exception as error:
         raise RuntimeError(
             f"Ocurrio un error al leer el PDF: {error}"

@@ -21,7 +21,7 @@ def get_user_question():
     
     # Verifica que la pregunta ingresada sea valida antes de enviarla al modelo.
     while True:
-        #solicitar al usuario una pregunta.
+        # solicitar al usuario una pregunta.
         question = input("Escribe tu pregunta: ")
 
         # Valida si la pregunta es una cadena vacia o contiene unicamente espacios
@@ -30,5 +30,5 @@ def get_user_question():
             #print()
             continue
 
-        #Devolver la pregunta capturada.
+        # Devolver la pregunta capturada.
         return question

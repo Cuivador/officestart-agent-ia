@@ -3,13 +3,13 @@
 Módulo: llm.py
 
 Responsabilidad:
-    Gestionar la comunicacion entre la aplicacion y el
+    Gestionar la comunicación entre la aplicación y el
     modelo de inteligencia artificial Gemini.
 
-Este modulo NO conoce el contenido del PDF ni interactua
+Este modulo NO conoce el contenido del PDF ni interactúa
 con la interfaz de usuario.
 
-Su unica responsabilidad es enviar solicitudes al modelo
+Su única responsabilidad es enviar solicitudes al modelo
 y devolver las respuestas generadas.
 ===============================================================
 """
@@ -27,6 +27,7 @@ def get_api_key():
     Raises:
         ValueError: Si la variable GEMINI_API_KEY no existe.
     """
+
     #Cargar las variables de entorno definidas en el archivo .env
     load_dotenv()
 
@@ -36,7 +37,7 @@ def get_api_key():
     #Verificar que la API Key exista
     if not api_key:
         raise ValueError(
-            "No se encontro la variable de GEMINI_API_KEY en el archivo .env"
+            "No se encontró la variable de GEMINI_API_KEY en el archivo .env"
         )
     return api_key
 
@@ -59,7 +60,7 @@ def create_client():
 
 def build_prompt(context, question):
     """
-    Construye el prompt que sera enviado a Gemini.
+    Construye el prompt que será enviado a Gemini.
 
     Args:
         context (str): Contenido del documento PDF.
@@ -136,7 +137,7 @@ def generate_response(context, question):
             contents=prompt
         )
 
-        #Devolver unicamente el texto de la respuesta.
+        #Devolver únicamente el texto de la respuesta.
         return response.text
     
     except Exception as error:
