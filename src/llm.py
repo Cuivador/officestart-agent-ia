@@ -140,9 +140,29 @@ def generate_response(context, question):
         return response.text
     
     except Exception as error:
-        # Informar al usuario que ocurrio un error durante el procesamiento
-        print(error)
-        return (
-            "Lo siento, ha ocurrido un error al procesar su solicitud.\n\n"
-            "Por favor, inténtelo nuevamente en unos momentos."
-        )
+        # Convertir el error a texto para analizarlo
+        error_message = str(error)
+
+        # Mostrar el error en la consola
+        print(error_message)
+
+        # Error: Cuota de la API agotada
+        if "429" in error_message:
+            return (
+                "⚠️ Se alcanzó el límite de solicitudes de la API de Gemini.\n\n"
+                "Espere unos minutos e inténtelo nuevamente."
+            )
+        
+        # Error: alta demanda del servicio
+        elif "503" in error_message:
+            return (
+                "⚠️ Gemini está experimentando una alta demanda en este momento.\n\n"
+                "Por favor, inténtelo nuevamente en unos instantes."
+            )
+
+        # Cualquier otro error
+        else:
+            return (
+                "❌ Lo siento, ha ocurrido un error inesperado al procesar su solicitud.\n\n"
+                "Por favor, inténtelo nuevamente en unos momentos."
+            )

@@ -2,6 +2,7 @@ import streamlit as st
 from src.config import PDF_PATH
 from src.pdf_loader import load_pdf
 from src.llm import generate_response
+from time import perf_counter
 
 @st.cache_data
 def load_document():
@@ -30,6 +31,11 @@ st.info("¡Bienvenido! Escribe una pregunta para comenzar.")
 for message in st.session_state["messages"]:
     with st.chat_message(message["role"]):
         st.write(message["content"])
+        if message["role"] == "assistant":
+            st.caption(
+                f"⏱ Tiempo de respuesta: {message['response_time']:.2f} segundos"
+            )
+        
 
 # Mostrar el botton unicamente cuando exista una conversacion
 if st.session_state["messages"]:
@@ -58,6 +64,9 @@ if question is not None:
             }
         )
 
+        # Iniciar la medicion del tiempo de respuesta
+        start_time = perf_counter()
+
         # Generar la respuesta del asistente
         with st.spinner("Procesando su solicitud..."):
             response = generate_response(
@@ -65,11 +74,18 @@ if question is not None:
                 question
             )
 
+        # Finalizar la medicion del tiempo de respuesta
+        end_time = perf_counter()
+
+        # Calcular el tiempo que tardo el modelo en responder
+        response_time = end_time - start_time
+
         # Guardar la respuesta del asistente
         st.session_state["messages"].append(
             {
                 "role": "assistant",
-                "content": response 
+                "content": response,
+                "response_time": response_time
             }
         )
 
