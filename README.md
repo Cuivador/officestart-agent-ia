@@ -17,6 +17,7 @@
 - [📂 Estructura del proyecto](#-estructura-del-proyecto)
 - [⚙ Instalación y ejecución](#-instalación-y-ejecución)
 - [📸 Capturas](#-capturas)
+- [🌐 Demo](#-demo)
 ---
 
 ## 📖 Descripción
@@ -232,3 +233,45 @@ Abra esa dirección en su navegador para comenzar a interactuar con **OfficeStar
 ---
 
 ## 📸 Capturas
+
+A continuación se presentan algunas capturas de la aplicación durante su funcionamiento.
+
+### 🏠 Pantalla principal
+
+Vista inicial de **OfficeStart Agent IA**, donde el usuario puede comenzar a interactuar con el asistente mediante lenguaje natural.
+
+![Pantalla principal](assets/pantalla-principal.png)
+
+### 📄 Consulta basada en el Manual del Estudiante
+
+Tres ejemplos de consultas cuya respuesta fue generada utilizando la información contenida en el Manual del Estudiante de OfficeStart.
+
+#### 🔎 Ejemplo 1 – ¿Que es OfficeStart?
+
+![Consulta manual 01](assets/consulta-manual-01.png)
+
+#### 🔎 Ejemplo 2 – ¿Como puedo crear una cuenta?
+
+![Consulta manual 02](assets/consulta-manual-02.png)
+
+#### 🔎 Ejemplo 3 – ¿Cual es la politica de reembolsos?
+
+![Consulta manual 03](assets/consulta-manual-03.png)
+
+### 🚫 Consulta fuera del alcance del Manual
+
+Ejemplo del comportamiento del agente cuando el usuario realiza una pregunta que no está relacionada con el contenido del Manual del Estudiante.
+
+![Consulta fuera del manual](assets/consulta-fuera-del-manual.png)
+
+### ⚠️ Manejo de errores del servicio
+
+Cuando el servicio de Google Gemini presenta alta demanda o se encuentra temporalmente no disponible, la aplicación informa la situación mediante un mensaje amigable para el usuario.
+
+![Error 503](assets/error-503.png)
+
+## 🌐 Demo
+
+Puedes acceder a la aplicación desplegada desde el siguiente enlace:
+
+🔗 https://officestart-agent-ia.streamlit.app/
